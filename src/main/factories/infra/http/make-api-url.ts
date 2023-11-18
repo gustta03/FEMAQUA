@@ -1,0 +1,1 @@
+export const makeApiUrl = (path: string): string => `${'https://twilight-moon-atwho3qh8zey.vapor-farm-d1.com/api/'}${path}`
