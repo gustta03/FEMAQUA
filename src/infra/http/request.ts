@@ -6,7 +6,7 @@ export interface Response extends AxiosResponse {}
 
 export interface HttpClient {
   get: (url: string, config: RequestConfig) => any;
-  post: (url: string, options: string, config: RequestConfig) => any;
+  post: (url: string, body?: any, config?: RequestConfig) => any;
   delete: (url: string) => any;
 }
 
