@@ -6,42 +6,11 @@
 import { HttpClientSpy } from "./mocks/http-client-mock";
 import { makeMockData } from "./mocks/make-data-response-mock";
 import { ToolsRepository } from "../../src/infra/gateways/save-tool-repository";
-import {
-  Tools,
-  Tool,
-  SaveTool,
-} from "../../src/usecases/protocols/tool-protocols";
-import { HttpClient } from "../../src/infra/http/request";
 import { HttpStatusCode } from "../../src/usecases/protocols/http/http-client-protocol";
 import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
 import { NotFoundError } from "../../src/usecases/errors/not-found-error";
-import { UnexpectedError } from "../../src/usecases/errors/unexpected-error";
-import { LoadTools } from "../../src/usecases/load-tools-usecase";
 import { LoadTool } from '../../src/usecases/get-tool-by-id'
 
-export class LoadById implements SaveTool {
-  constructor(private readonly httpClient: HttpClientSpy) {}
-  insert(params: Tool.Param): Promise<Tool.Response> {
-    throw new Error("Method not implemented.");
-  }
-  load(params: Tool.Param): Promise<Tool.Response> {
-    throw new Error("Method not implemented.");
-  }
-
-  async loadById(params: Tool.Param): Promise<Tool.Response> {
-    const response = await this.httpClient.post(
-      `${params.url}/${params.data}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${params.token}`,
-        },
-      }
-    );
-    console.log(response);
-    return { status: response.status, data: response.data };
-  }
-}
 
 const sut = (url: string) => {
   const httpClient = new HttpClientSpy();
@@ -53,7 +22,7 @@ const sut = (url: string) => {
   };
 };
 
-describe("AccountAuthentication", () => {
+describe("RemoteTools", () => {
   test("should return tool data when usecase are called correctly", async () => {
     const { toolsUseCase, httpClient } = sut("any_url");
     httpClient.response = { status: 200, data: makeMockData() };
