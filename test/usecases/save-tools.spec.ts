@@ -27,7 +27,7 @@ describe("AccountAuthentication", () => {
     const { toolsUseCase, httpClient } = sut("any_url");
     httpClient.response = { status: 201, data: makeMockData() }
 
-    console.log(await toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] }))
+    await toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] })
     expect(httpClient.response).toEqual(httpClient.response);
   });
 
@@ -44,7 +44,7 @@ describe("AccountAuthentication", () => {
     ).rejects.toThrow(InvalidCredentialsError);
   });
 
-  test("should throw an NotFoundError when credencials are invalid", async () => {
+  test("should throw an NotFoundError when call execute use case method", async () => {
     const url = "any_url";
     const { toolsUseCase, httpClient } = sut(url);
 
