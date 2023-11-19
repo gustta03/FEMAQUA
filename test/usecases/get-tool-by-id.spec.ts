@@ -87,7 +87,7 @@ describe("AccountAuthentication", () => {
     expect(httpClient.response).toEqual(httpClient.response);
   });
 
-  test("should throw an NotFoundError when call execute use case method", async () => {
+  test("should throw an NotFoundError when HttpClient return 404", async () => {
     const url = "any_url";
     const { toolsUseCase, httpClient } = sut(url);
 
@@ -98,5 +98,18 @@ describe("AccountAuthentication", () => {
     await expect(
       toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] })
     ).rejects.toThrow(NotFoundError);
+  });
+
+  test("should throw an InvalidCredentialsError when HttpClient return 401", async () => {
+    const url = "any_url";
+    const { toolsUseCase, httpClient } = sut(url);
+
+    httpClient.response = {
+      status: HttpStatusCode.forbidden,
+    };
+
+    await expect(
+      toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] })
+    ).rejects.toThrow(InvalidCredentialsError);
   });
 });
