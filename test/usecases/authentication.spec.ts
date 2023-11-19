@@ -29,7 +29,7 @@ describe("AccountAuthentication", () => {
     httpClient.response = {
       status: HttpStatusCode.Ok,
     };
-    console.log(httpClient)
+  
     await accountAuthentication.execute({
       email: 'any_user_email',
       password: 'any_user_password'

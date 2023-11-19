@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable no-useless-catch */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { HttpClientSpy } from "./mocks/http-client-mock";
 import { makeMockData } from "./mocks/make-data-response-mock";
 import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
@@ -11,48 +6,46 @@ import { HttpStatusCode } from "axios";
 import { ToolsRepository } from "../../src/infra/gateways/save-tool-repository";
 import { LoadTools } from '../../src/usecases/load-tools-usecase'
 
-const sut = (url: string) => {
+const API_URL = "any_url";
+
+const setupTest = (url: string) => {
   const httpClient = new HttpClientSpy();
-  const remoteLoadTools = new ToolsRepository(httpClient);
-  const toolsUseCase = new LoadTools(url, remoteLoadTools);
+  const toolsRepository = new ToolsRepository(httpClient);
+  const toolsUseCase = new LoadTools(url, toolsRepository);
   return {
     toolsUseCase,
     httpClient,
   };
 };
 
-describe("AccountAuthentication", () => {
-  test("should return tool data when usecase are called correctly", async () => {
-    const { toolsUseCase, httpClient } = sut("any_url");
-    httpClient.response = { status: 200, data: makeMockData() };
+describe("LoadTools Use Case", () => {
+  test("should return tool data when the use case is called correctly", async () => {
+    const { toolsUseCase, httpClient } = setupTest(API_URL);
+    httpClient.response = { status: HttpStatusCode.Ok, data: makeMockData() };
 
-    await toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] });
+    await toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] });
     expect(httpClient.response).toEqual(httpClient.response);
   });
 
-  test("should throw an AccessDaniedError when credencials are invalid", async () => {
-    const url = "any_url";
-    const { toolsUseCase, httpClient } = sut(url);
-
+  test("should throw an InvalidCredentialsError when credentials are invalid", async () => {
+    const { toolsUseCase, httpClient } = setupTest(API_URL);
     httpClient.response = {
       status: HttpStatusCode.Forbidden,
     };
 
     await expect(
-      toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] })
+      toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })
     ).rejects.toThrow(InvalidCredentialsError);
   });
 
-  test("should throw an NotFoundError when credencials are invalid", async () => {
-    const url = "any_url";
-    const { toolsUseCase, httpClient } = sut(url);
-
+  test("should throw a NotFoundError when credentials are invalid", async () => {
+    const { toolsUseCase, httpClient } = setupTest(API_URL);
     httpClient.response = {
       status: HttpStatusCode.NotFound,
     };
 
     await expect(
-      toolsUseCase.execute({ url: "any_url", token: "any_token", data: [] })
+      toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })
     ).rejects.toThrow(NotFoundError);
   });
 });

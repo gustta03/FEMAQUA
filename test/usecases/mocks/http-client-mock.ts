@@ -22,6 +22,7 @@ export class HttpClientSpy implements HttpClient {
     }
 
     this.request = { method: "post", url, body, config, status: this.status || 200 };
+    
     return this.response;
   }
 
