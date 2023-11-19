@@ -6,7 +6,7 @@ import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-crede
 import { NotFoundError } from "../../src/usecases/errors/not-found-error";
 import { LoadTool } from '../../src/usecases/get-tool-by-id'
 
-const API_URL = "any_url";
+const API_URL = "http://any_url.com/api";
 
 const setupTest = (url: string) => {
   const httpClient = new HttpClientSpy();
@@ -45,7 +45,7 @@ describe("LoadTool Use Case", () => {
   test("should throw an InvalidCredentialsError when HttpClient returns 401", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
     httpClient.response = {
-      status: HttpStatusCode.forbidden,
+      status: HttpStatusCode.unauthorized,
     };
 
     await expect(

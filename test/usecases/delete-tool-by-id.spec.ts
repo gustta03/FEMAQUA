@@ -35,7 +35,7 @@ describe("DeleteTool Use Case", () => {
   test("should throw an InvalidCredentialsError when credentials are invalid", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
     httpClient.response = {
-      status: HttpStatusCode.forbidden,
+      status: HttpStatusCode.unauthorized,
     };
 
     await expect(

@@ -2,9 +2,9 @@ import { HttpClientSpy } from "./mocks/http-client-mock";
 import { makeMockData } from "./mocks/make-data-response-mock";
 import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
 import { NotFoundError } from "../../src/usecases/errors/not-found-error";
-import { HttpStatusCode } from "axios";
 import { ToolsRepository } from "../../src/infra/gateways/save-tool-repository";
 import { LoadTools } from '../../src/usecases/load-tools-usecase'
+import { HttpStatusCode } from "../../src/usecases/protocols/http/http-client-protocol";
 
 const API_URL = "any_url";
 
@@ -21,7 +21,7 @@ const setupTest = (url: string) => {
 describe("LoadTools Use Case", () => {
   test("should return tool data when the use case is called correctly", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
-    httpClient.response = { status: HttpStatusCode.Ok, data: makeMockData() };
+    httpClient.response = { status: HttpStatusCode.ok, data: makeMockData() };
 
     await toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] });
     expect(httpClient.response).toEqual(httpClient.response);
@@ -30,7 +30,7 @@ describe("LoadTools Use Case", () => {
   test("should throw an InvalidCredentialsError when credentials are invalid", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
     httpClient.response = {
-      status: HttpStatusCode.Forbidden,
+      status: HttpStatusCode.unauthorized,
     };
 
     await expect(
@@ -41,7 +41,7 @@ describe("LoadTools Use Case", () => {
   test("should throw a NotFoundError when credentials are invalid", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
     httpClient.response = {
-      status: HttpStatusCode.NotFound,
+      status: HttpStatusCode.notFound,
     };
 
     await expect(

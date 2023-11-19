@@ -29,7 +29,7 @@ describe("SaveToolUseCase", () => {
 
   test("should throw an InvalidCredentialsError when credentials are invalid", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
-    httpClient.response = { status: HttpStatusCode.Forbidden };
+    httpClient.response = { status: HttpStatusCode.Unauthorized };
 
     await expect(
       toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })
