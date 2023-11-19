@@ -19,7 +19,7 @@ export class DeleteTool implements Tools {
       console.log(response)
       switch (response.status) {
         case HttpStatusCode.ok:return response;
-        case HttpStatusCode.forbidden:throw new InvalidCredentialsError();
+        case HttpStatusCode.unauthorized:throw new InvalidCredentialsError();
         case HttpStatusCode.notFound:throw new NotFoundError();
         default:throw new UnexpectedError();
       }

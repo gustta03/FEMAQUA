@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Tool } from "../../domain/models/tools-model";
 
-export interface SaveTool {
+export interface ToolRepo {
   insert(params: Tool.Param): Promise<Tool.Response>;
   load(params: Tool.Param): Promise<Tool.Response>;
+  loadById(params: Tool.Param): Promise<Tool.Response>;
+  deleteById(params: Tool.Param): Promise<Tool.Response>;
 }
 
 export interface Tools {
@@ -14,9 +16,9 @@ export interface Tools {
 
 export namespace Tool {
   export type Param = {
-    url: string;
+    url?: string;
     token: string;
-    data: any
+    data?: any
   };
 
   export type Response = {
