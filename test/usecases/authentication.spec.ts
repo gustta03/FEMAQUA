@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HttpStatusCode } from "axios";
-import { HttpClientSpy } from "./mock/http-client-mock";
+import { HttpClientSpy } from "./mocks/http-client-mock";
 import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
 import { Authentication } from "../../src/infra/gateways/authentication-account";
 import { AccountAuthentication } from "../../src/usecases/authentication";
@@ -29,8 +29,11 @@ describe("AccountAuthentication", () => {
     httpClient.response = {
       status: HttpStatusCode.Ok,
     };
-
-    await accountAuthentication.auth();
+    console.log(httpClient)
+    await accountAuthentication.execute({
+      email: 'any_user_email',
+      password: 'any_user_password'
+    });
 
     expect(httpClient).toBeDefined();
     expect(httpClient.request.method).toBe("post");
@@ -45,7 +48,7 @@ describe("AccountAuthentication", () => {
       status: HttpStatusCode.Forbidden,
     };
 
-    await expect(accountAuthentication.auth()).rejects.toThrow(
+    await expect(accountAuthentication.execute({ email: 'any_user_email', password: 'any_user_password' })).rejects.toThrow(
       InvalidCredentialsError
     );
   });
