@@ -6,7 +6,7 @@ import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-crede
 import { NotFoundError } from "../../src/usecases/errors/not-found-error";
 import { DeleteTool } from '../../src/usecases/delete-tool-by-id'
 
-const API_URL = "any_url";
+const API_URL = "http://any_url.com/api";
 
 const setupTest = (url: string) => {
   const httpClient = new HttpClientSpy();

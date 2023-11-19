@@ -2,11 +2,11 @@ import { HttpClientSpy } from "./mocks/http-client-mock";
 import { makeMockData } from "./mocks/make-data-response-mock";
 import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
 import { NotFoundError } from "../../src/usecases/errors/not-found-error";
-import { HttpStatusCode } from "axios";
 import { SaveToolUseCase } from '../../src/usecases/save-tool-usecase'
 import { ToolsRepository } from '../../src/infra/gateways/save-tool-repository'
+import { HttpStatusCode } from "../../src/usecases/protocols/http/http-client-protocol";
 
-const API_URL = "any_url";
+const API_URL = "http://any_url.com/api";
 
 const setupTest = (url: string) => {
   const httpClient = new HttpClientSpy();
@@ -29,8 +29,8 @@ describe("SaveToolUseCase", () => {
 
   test("should throw an InvalidCredentialsError when credentials are invalid", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
-    httpClient.response = { status: HttpStatusCode.Unauthorized };
-
+    httpClient.response = { status: HttpStatusCode.unauthorized };
+    
     await expect(
       toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })
     ).rejects.toThrow(InvalidCredentialsError);
@@ -38,7 +38,7 @@ describe("SaveToolUseCase", () => {
 
   test("should throw a NotFoundError when the execute use case method is called", async () => {
     const { toolsUseCase, httpClient } = setupTest(API_URL);
-    httpClient.response = { status: HttpStatusCode.NotFound };
+    httpClient.response = { status: HttpStatusCode.notFound };
 
     await expect(
       toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })

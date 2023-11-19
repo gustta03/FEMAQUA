@@ -6,7 +6,7 @@ import { ToolsRepository } from "../../src/infra/gateways/save-tool-repository";
 import { LoadTools } from '../../src/usecases/load-tools-usecase'
 import { HttpStatusCode } from "../../src/usecases/protocols/http/http-client-protocol";
 
-const API_URL = "any_url";
+const API_URL = "http://any_url.com/api";
 
 const setupTest = (url: string) => {
   const httpClient = new HttpClientSpy();
