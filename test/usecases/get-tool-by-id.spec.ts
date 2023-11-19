@@ -17,6 +17,7 @@ import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-crede
 import { NotFoundError } from "../../src/usecases/errors/not-found-error";
 import { UnexpectedError } from "../../src/usecases/errors/unexpected-error";
 import { LoadTools } from "../../src/usecases/load-tools-usecase";
+import { LoadTool } from '../../src/usecases/get-tool-by-id'
 
 export class LoadById implements SaveTool {
   constructor(private readonly httpClient: HttpClientSpy) {}
@@ -39,28 +40,6 @@ export class LoadById implements SaveTool {
     );
     console.log(response);
     return { status: response.status, data: response.data };
-  }
-}
-
-class LoadTool implements Tools {
-  constructor(
-    private readonly url: string,
-    private readonly loadToolById: SaveTool
-  ) {}
-
-  async execute(params: Tool.Param): Promise<Tool.Response | undefined> {
-    const response = await this.loadToolById.loadById({
-      url: params.url,
-      data: params.data,
-      token: params.token,
-    });
-   
-    switch (response.status) {
-      case HttpStatusCode.ok:return response;
-      case HttpStatusCode.forbidden:throw new InvalidCredentialsError();
-      case HttpStatusCode.notFound:throw new NotFoundError();
-      default:throw new UnexpectedError();
-    }
   }
 }
 
