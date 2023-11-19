@@ -3,6 +3,7 @@ import Login from "../../app/pages/login/Login";
 import { makeAuthUseCase } from "../factories/usecase/make-auth-usecase";
 import { makeCookieAuth } from "../factories/make-cookie";
 import Tool from "../../app/pages/tools/tools";
+import { makeLoadTool } from "../factories/usecase/make-load-tool-usecase";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/home/tools',
-    element: <Tool addTool={undefined} />, 
+    element: <Tool loadAllTool={makeLoadTool()} cookies={makeCookieAuth()} />, 
   },
 ]);
 
