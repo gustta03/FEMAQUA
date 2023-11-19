@@ -28,11 +28,8 @@ export function Login({ authentication, cookies }: Props) {
           email: emailRef.current.value,
           password: passwordRef.current.value,
         });
-        cookies.set("access_token", response.data.accessToken, {
-          path: "/",
-          httpOnly: true,
-          secure: true,
-        });
+  
+        cookies.set("access_token", response.data.access_token);
         navigate('/home/tools')
       } catch (error) {
         console.error(error);
