@@ -74,7 +74,7 @@ export function Tool({ saveTool, cookies }: Props) {
                   id="title"
                   data-testid="title-input"
                   {...register("title")}
-                  className={`border-2 bg-[#F5F4F6] inputField ${errors.title ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
+                  className={`border-[1px] rounded-sm bg-[#F5F4F6] inputField ${errors.title ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
                 />
                 {errors.title ? (
                   <span className="text-[#F95E5A]">{errors.title.message as string}</span>
@@ -89,7 +89,7 @@ export function Tool({ saveTool, cookies }: Props) {
                   data-testid="link-input"
                   {...register("link")}
                   type="text"
-                  className={`border-2 bg-[#F5F4F6] inputField ${errors.link ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
+                  className={`border-[1px] rounded-sm bg-[#F5F4F6] inputField ${errors.link ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
                 />
                 {errors.link ? (
                   <span className="text-[#F95E5A]">{errors.link.message as string}</span>
@@ -102,7 +102,7 @@ export function Tool({ saveTool, cookies }: Props) {
                 id="description"
                 data-testid="description-input"
                 {...register("description")}
-                className={`border-2 mb-4 bg-[#F5F4F6] inputField ${errors.description ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
+                className={`border-[1px] rounded-sm mb-4 bg-[#F5F4F6] inputField ${errors.description ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
               />
               {errors.description ? (
                 <span className="text-[#F95E5A]">{errors.description.message as string}</span>
@@ -115,7 +115,7 @@ export function Tool({ saveTool, cookies }: Props) {
                 data-testid="tags-input"
                 {...register("tags")}
                 type="text"
-                className={`border-2 inputField bg-[#F5F4F6] ${errors.tags ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
+                className={`border-[1px] rounded-sm inputField bg-[#F5F4F6] ${errors.tags ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
               />
               {errors.tags ? (
                 <span className="text-[#F95E5A]">{errors.tags.message as string}</span>

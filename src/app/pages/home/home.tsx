@@ -65,7 +65,7 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
           />
           <Button
             text="Adicionar"
-            type="success"
+            type="add"
             handleOnClick={handleAddButtonClick}
           />
         </span>
