@@ -4,7 +4,6 @@ import Layout from "../../layout/layout";
 import { Tools } from "../../../usecases/protocols/tool-protocols";
 import Cookies from "universal-cookie";
 import Button from "../../components/buttons/button";
-import Card from "../../components/cards/cards";
 
 type Props = {
   loadAllTool: Tools;
