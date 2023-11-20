@@ -1,4 +1,4 @@
-## FEMAQUA - Ferramenta Maravilhosas Que Adoro
+## FEMAQUA - Ferramentas Maravilhosas Que Adoro
 
 Um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.
 
