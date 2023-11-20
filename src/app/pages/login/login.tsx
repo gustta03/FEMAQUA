@@ -30,7 +30,7 @@ export function Login({ authentication, cookies }: Props) {
         });
 
         cookies.set("access_token", response.data.access_token);
-        navigate("/home/tools");
+        navigate("/");
       } catch (error) {
         console.error(error);
       }
