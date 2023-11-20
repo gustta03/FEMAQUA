@@ -39,14 +39,14 @@ export function Login({ authentication, cookies }: Props) {
 
   return (
     <main className="flex">
-      <div data-testid="form" className="w-[80vw] h-[95vh] mt-[60px] p-10">
+      <div data-testid="form" className="w-[90vw] h-[95vh] mt-[60px] p-10 m-auto">
         <div className="text-2xl w-[90%] m-auto mb-20">
           <p>FEMAQUA</p>
           <p>Ferramentas maravilhosas que adoro</p>
         </div>
         <form
           data-testid="form"
-          className="m-auto w-[90%] h-[50%]"
+          className="m-auto w-[100%] h-[50%]"
           onSubmit={handleSubmit}
         >
           <label htmlFor="email">Email</label>
@@ -55,7 +55,7 @@ export function Login({ authentication, cookies }: Props) {
             name="email"
             id="email"
             placeholder="Digite seu e-mail"
-            className="block mb-2 w-[70%] p-2 border-solid border-2 border-black"
+            className="block mb-2 w-[100%] lg:w-[70%] p-2 border-solid border-2 border-black"
             ref={emailRef}
           />
 
@@ -65,7 +65,7 @@ export function Login({ authentication, cookies }: Props) {
             name="password"
             id="password"
             placeholder="Digite sua senha"
-            className="block mb-2 w-[70%] p-2 border-solid border-2 border-black"
+            className="block mb-2  w-[100%] lg:w-[70%] p-2 border-solid border-2 border-black"
             ref={passwordRef}
           />
           <div className="w-[70%] flex justify-end">
@@ -79,8 +79,8 @@ export function Login({ authentication, cookies }: Props) {
           </div>
         </form>
       </div>
-      <div className="bg-[#365DF0] w-[80%] sm:none">
-        <p></p>
+      <div className="bg-[#365DF0] w-[80%] hidden md:block">
+      
       </div>
     </main>
   );
