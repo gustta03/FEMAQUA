@@ -61,9 +61,15 @@ export function Tool({ saveTool, cookies }: Props) {
           onSubmit={handleSubmit(handleAddTool)}
           className="h-[70vh] shadow-lg"
         >
-          <h1 className="p-5 border-b border-gray-200">
+          <div className="flex justify-between p-5 border-b border-gray-200">
+          <h1>
             Adicionar nova ferramenta
           </h1>
+          
+          <button onClick={() => navigate('/')}>
+            x
+          </button>
+          </div>
           <div className="w-[90%] m-auto flex flex-col h-[70%] mt-5">
             <div className={`flex justify-between w-[100%] h-auto mb-5 ${inputClass('title')}`}>
               <div className={`flex flex-col w-[45%] inputWrapper`}>
