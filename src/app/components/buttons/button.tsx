@@ -9,7 +9,7 @@ export function Button({ text, type, handleOnClick }: Props) {
   return (
   <main>
     <button
-        className={`border-slate-600 border-1 text-center h-10 w-32 text-white ${
+        className={`border-slate-600 border-1 rounded-[5px] text-center h-10 w-32 text-white ${
           type === "add" ? "bg-[#0E995D]" : "bg-[#F95E5A]"
         } `}
         onClick={handleOnClick}
