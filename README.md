@@ -43,3 +43,8 @@ Para executar todos os testes rode o seguinte comando:
 ```
 npm run test
 ```
+
+### Credenciais de acesso
+
+user: [admin@admin.com](mailto:admin@admin.com)
+senha: admin123
