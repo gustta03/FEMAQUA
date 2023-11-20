@@ -1,6 +1,6 @@
 ## FEMAQUA - Ferramenta Maravilhosas Que Adoro
 
-um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.
+Um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.
 
 Recursos da Aplicação
 
@@ -8,6 +8,7 @@ Recursos da Aplicação
 - Listagem de Ferramentas: Visualização organizada das ferramentas.
 - Exclusão de Ferramentas: Remoção de ferramentas.
 - Busca: Recurso de busca para lista todas as ferramentas salvas.
+- Adição: Recurso de adição de ferramentas
 
 ## Instalação:
 antes de iniciar certifique-se de tenha nodeJs intalado em sua máquina
