@@ -1,6 +1,5 @@
 import { HttpStatusCode } from "axios";
 import { HttpClientSpy } from "./mocks/http-client-mock";
-import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
 import { Authentication } from "../../src/infra/gateways/authentication-account";
 import { AccountAuthentication } from "../../src/usecases/authentication";
 
@@ -45,6 +44,6 @@ describe("AccountAuthentication Use Case", () => {
         email: 'any_user_email',
         password: 'any_user_password'
       })
-    ).rejects.toThrow(InvalidCredentialsError);
+    ).rejects.toThrow('Erro, crendenciais de acesso inválido');
   });
 });

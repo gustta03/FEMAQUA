@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../buttons/button";
 import Modal from "../modal/modal";
 import { Tools } from "../../../usecases/protocols/tool-protocols";
@@ -34,7 +34,7 @@ export function Card({ data, deleteTool, updateHomeData }: Prop) {
     <main>
       <div className="mt-5 h-auto bottom-5 p-10 shadow-md">
         <span className="flex justify-between align-middle ">
-          <a href={data.link}>
+          <a href={data.link} target="_blank">
             <h1 className="text-2xl font-bold text-sky-600">{data.title}</h1>
           </a>
           <Button text="Deletar" handleOnClick={handleOpenModal} />

@@ -53,13 +53,13 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
   );
 
   return (
-    <main className="flex">
+    <main className="flex flex-col lg:flex-row m-auto">
       <Layout>
-        <span className="flex justify-between align-middle h-10 mt-5">
+        <span className="flex flex-col lg:flex-row justify-between items-center h-10 mt-5">
           <input
             type="text"
-            placeholder="buscar por tag"
-            className="pl-3 border-2 bg-[#F5F4F6] 1px solid border-[#EBEAED]"
+            placeholder="Buscar por tag"
+            className="lg:mr-2 mb-2 lg:mb-0 pl-3 border-2 bg-[#F5F4F6] 1px solid border-[#EBEAED]"
             value={searchTag}
             onChange={handleSearchInputChange}
           />

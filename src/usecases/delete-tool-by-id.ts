@@ -16,7 +16,7 @@ export class DeleteTool implements Tools {
         token: params.token,
         data: params.data,
       });
-      console.log(response)
+
       switch (response.status) {
         case HttpStatusCode.ok:return response;
         case HttpStatusCode.unauthorized:throw new InvalidCredentialsError();

@@ -3,4 +3,4 @@ import { makeApiUrl } from "../infra/http/make-api-url";
 import { makeToolRepo } from "../infra/repos/make-tool-repository";
 
 export const makeDeleteTool = () =>
-    new DeleteTool(makeApiUrl("tools/"), makeToolRepo());
+    new DeleteTool(makeApiUrl("tools"), makeToolRepo());

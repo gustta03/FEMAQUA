@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RequestConfig } from "../../../src/infra/http/request";
-import { HttpClient, HttpResponse, HttpStatusCode } from "../../../src/usecases/protocols/http/http-client-protocol";
+import { HttpClient, HttpResponse } from "../../../src/usecases/protocols/http/http-client-protocol";
 
 export class HttpClientSpy implements HttpClient {
   url?: string;
@@ -9,6 +9,7 @@ export class HttpClientSpy implements HttpClient {
   status!: number;
   response: any;
 
+  // @ts-ignore
   async get(url: string, config: RequestConfig = {}) {
     if (this.response instanceof Error) {
       throw this.response;
@@ -25,12 +26,13 @@ export class HttpClientSpy implements HttpClient {
     
     return this.response;
   }
-
-  async delete(url: string): Promise<HttpResponse<any>> {
+  
+  // @ts-ignore
+  async delete(url): Promise<HttpResponse<any>> {
     if (this.response instanceof Error) {
       throw this.response;
     }
 
-    return { status: HttpStatusCode.ok, data: null };
+    return  this.response;
   }
 }

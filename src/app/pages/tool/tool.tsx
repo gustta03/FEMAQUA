@@ -1,8 +1,7 @@
 import Layout from "../../layout/layout";
 import { Tools } from "../../../usecases/protocols/tool-protocols";
 import Cookies from "universal-cookie";
-import Button from "../../components/buttons/button";
-import { useFetcher, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -56,7 +55,7 @@ export function Tool({ saveTool, cookies }: Props) {
   };
 
   return (
-    <main className="flex">
+    <main className="flex m-auto">
       <Layout>
         <form
           onSubmit={handleSubmit(handleAddTool)}
@@ -68,8 +67,12 @@ export function Tool({ saveTool, cookies }: Props) {
           <div className="w-[90%] m-auto flex flex-col h-[70%] mt-5">
             <div className={`flex justify-between w-[100%] h-auto mb-5 ${inputClass('title')}`}>
               <div className={`flex flex-col w-[45%] inputWrapper`}>
-                <label className="block">Titulo</label>
+                <label htmlFor="title" className="block">
+                  Titulo
+                </label>
                 <input
+                  id="title"
+                  data-testid="title-input"
                   {...register("title")}
                   className={`border-2 bg-[#F5F4F6] inputField ${errors.title ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
                 />
@@ -78,8 +81,12 @@ export function Tool({ saveTool, cookies }: Props) {
                 ) : null}
               </div>
               <div className={`flex flex-col w-[45%] inputWrapper`}>
-                <label className="block">Link</label>
+                <label htmlFor="link" className="block">
+                  Link
+                </label>
                 <input
+                  id="link"
+                  data-testid="link-input"
                   {...register("link")}
                   type="text"
                   className={`border-2 bg-[#F5F4F6] inputField ${errors.link ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
@@ -90,8 +97,10 @@ export function Tool({ saveTool, cookies }: Props) {
               </div>
             </div>
             <div className={`flex flex-col inputWrapper`}>
-              <label>Descrição</label>
+              <label htmlFor="description">Descrição</label>
               <textarea
+                id="description"
+                data-testid="description-input"
                 {...register("description")}
                 className={`border-2 mb-4 bg-[#F5F4F6] inputField ${errors.description ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
               />
@@ -100,8 +109,10 @@ export function Tool({ saveTool, cookies }: Props) {
               ) : null}
             </div>
             <div className={`flex flex-col inputWrapper`}>
-              <label>Tags</label>
+              <label htmlFor="tags">Tags</label>
               <input
+                id="tags"
+                data-testid="tags-input"
                 {...register("tags")}
                 type="text"
                 className={`border-2 inputField bg-[#F5F4F6] ${errors.tags ? 'bg-[#FEEFEE] border-2 border-[#95E5A]' : ''}`}
@@ -111,8 +122,8 @@ export function Tool({ saveTool, cookies }: Props) {
               ) : null}
             </div>
             <div className="w-[90%] m-auto flex justify-end">
-            <button className="bg-[#365DF0] pt-2 pl-6 pr-6 pb-2 text-white cursor-pointer" type="submit">Salvar</button>
-          </div>
+              <button className="bg-[#365DF0] pt-2 pl-6 pr-6 pb-2 text-white cursor-pointer" type="submit">Salvar</button>
+            </div>
           </div>
         </form>
       </Layout>

@@ -15,7 +15,7 @@ export class LoadTools implements Tools {
       url: this.url,
       token: params.token,
     });
-    console.log(params)
+
     switch (toolData.status) {
       case HttpStatusCode.ok:
         return toolData;

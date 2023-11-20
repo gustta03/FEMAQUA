@@ -7,7 +7,7 @@ export interface Response extends AxiosResponse {}
 export interface HttpClient {
   get: (url: string, config: RequestConfig) => any;
   post: (url: string, body?: any, config?: RequestConfig) => any;
-  delete: (url: string) => any;
+  delete: (url: string, config?: RequestConfig) => any;
 }
 
 export class Request implements HttpClient {
@@ -25,7 +25,7 @@ export class Request implements HttpClient {
     return this.request.post(url, body, config);
   }
 
-  async delete(url: string) {
-    return this.request.delete(url);
+  async delete(url: string, config: RequestConfig = {}) {
+    return this.request.delete(url, config);
   }
 }

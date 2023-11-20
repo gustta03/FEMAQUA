@@ -4,7 +4,6 @@ import { Tool } from "../../domain/models/tools-model";
 export interface ToolRepo {
   insert(params: Tool.Param): Promise<Tool.Response>;
   load(params: Tool.Param): Promise<Tool.Response>;
-  loadById(params: Tool.Param): Promise<Tool.Response>;
   deleteById(params: Tool.Param): Promise<Tool.Response>;
 }
 

@@ -28,9 +28,9 @@ export function Login({ authentication, cookies }: Props) {
           email: emailRef.current.value,
           password: passwordRef.current.value,
         });
-  
+
         cookies.set("access_token", response.data.access_token);
-        navigate('/home/tools')
+        navigate("/home/tools");
       } catch (error) {
         console.error(error);
       }
@@ -49,18 +49,21 @@ export function Login({ authentication, cookies }: Props) {
           className="m-auto w-[90%] h-[50%]"
           onSubmit={handleSubmit}
         >
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
+            id="email"
             placeholder="Digite seu e-mail"
             className="block mb-2 w-[70%] p-2 border-solid border-2 border-black"
             ref={emailRef}
           />
-          <label>Senha</label>
+
+          <label htmlFor="password">Senha</label>
           <input
             type="password"
             name="password"
+            id="password"
             placeholder="Digite sua senha"
             className="block mb-2 w-[70%] p-2 border-solid border-2 border-black"
             ref={passwordRef}
@@ -68,6 +71,7 @@ export function Login({ authentication, cookies }: Props) {
           <div className="w-[70%] flex justify-end">
             <button
               type="submit"
+              data-testid="submit-button"
               className="p-3 w-[100px] bg-[#365DF0] text-white rounded cursor-pointer"
             >
               Entrar

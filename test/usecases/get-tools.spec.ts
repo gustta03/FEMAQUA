@@ -1,7 +1,5 @@
 import { HttpClientSpy } from "./mocks/http-client-mock";
 import { makeMockData } from "./mocks/make-data-response-mock";
-import { InvalidCredentialsError } from "../../src/usecases/errors/invalid-credentials-error";
-import { NotFoundError } from "../../src/usecases/errors/not-found-error";
 import { ToolsRepository } from "../../src/infra/gateways/save-tool-repository";
 import { LoadTools } from '../../src/usecases/load-tools-usecase'
 import { HttpStatusCode } from "../../src/usecases/protocols/http/http-client-protocol";
@@ -35,7 +33,7 @@ describe("LoadTools Use Case", () => {
 
     await expect(
       toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })
-    ).rejects.toThrow(InvalidCredentialsError);
+    ).rejects.toThrow("Erro, crendenciais de acesso inválido");
   });
 
   test("should throw a NotFoundError when credentials are invalid", async () => {
@@ -46,6 +44,6 @@ describe("LoadTools Use Case", () => {
 
     await expect(
       toolsUseCase.execute({ url: API_URL, token: "any_token", data: [] })
-    ).rejects.toThrow(NotFoundError);
+    ).rejects.toThrow('Recurso não encontrado');
   });
 });

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES5",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -13,13 +13,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Linting */
+ 
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "test/usecases/mocks", "test/usecases/authentication.spec.ts", "test/usecases/save-tools.spec.ts", "test/pages/tool.spec.tsx", "test/pages/login.spec.tsx", "test/pages/home.spec.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
