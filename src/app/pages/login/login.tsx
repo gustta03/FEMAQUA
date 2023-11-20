@@ -46,7 +46,7 @@ export function Login({ authentication, cookies }: Props) {
         </div>
         <form
           data-testid="form"
-          className="m-auto w-[100%] h-[50%]"
+          className="m-auto w-[90%] h-[50%]"
           onSubmit={handleSubmit}
         >
           <label htmlFor="email">Email</label>
