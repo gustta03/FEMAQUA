@@ -23,6 +23,7 @@ type Props = {
 
 export function Home({ getTools, deleteTool, cookies }: Props) {
   const [toolData, setToolData] = useState<Tool[]>([]);
+  const [searchTag, setSearchTag] = useState<string>("");
   const cookie = cookies.get("access_token");
   const navigate = useNavigate();
 
@@ -43,6 +44,14 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
     navigate("/home/tools/save");
   };
 
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTag(event.target.value);
+  };
+
+  const filteredToolData = toolData.filter((tool) =>
+    tool.tags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase()))
+  );
+
   return (
     <main className="flex">
       <Layout>
@@ -51,6 +60,8 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
             type="text"
             placeholder="buscar por tag"
             className="pl-3 border-2 bg-[#F5F4F6] 1px solid border-[#EBEAED]"
+            value={searchTag}
+            onChange={handleSearchInputChange}
           />
           <Button
             text="Adicionar"
@@ -58,7 +69,7 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
             handleOnClick={handleAddButtonClick}
           />
         </span>
-        {toolData.map((item, index) => (
+        {filteredToolData.map((item, index) => (
           <Card
             key={index}
             data={item}
