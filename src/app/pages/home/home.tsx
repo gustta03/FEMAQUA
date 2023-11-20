@@ -31,7 +31,7 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
   const updateHomeData = async () => {
     try {
       const response = await getTools.execute({ token: cookie });
-      setToolData(response?.data as unknown  as Tool[]);
+      setToolData(response?.data as unknown as Tool[]);
     } catch (error) {
       console.error("Error loading tools:", error);
     }
@@ -45,7 +45,9 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
     navigate("/home/tools/save");
   };
 
-  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setSearchTag(event.target.value);
   };
 
@@ -56,7 +58,7 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
   return (
     <main className="flex flex-col lg:flex-row m-auto">
       <Layout>
-        <span className="flex flex-col lg:flex-row justify-between items-center h-10 mt-5">
+        <span className="flex flex-col lg:flex-row justify-between items-center">
           <input
             type="text"
             placeholder="Buscar por tag"
