@@ -25,6 +25,7 @@ export function Home({ getTools, deleteTool, cookies }: Props) {
   const [toolData, setToolData] = useState<Tool[]>([]);
   const [searchTag, setSearchTag] = useState<string>("");
   const cookie = cookies.get("access_token");
+
   const navigate = useNavigate();
 
   const updateHomeData = async () => {

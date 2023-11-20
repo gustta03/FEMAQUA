@@ -48,7 +48,7 @@ export function Tool({ saveTool, cookies }: Props) {
         token: cookies.get("access_token"),
         data: { ...data, tags: tagsArray },
       });
-      navigate("/home/tools");
+      navigate("/");
     } catch (error) {
       console.error("Error adding tool:", error);
     }
