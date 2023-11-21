@@ -10,6 +10,14 @@ Recursos da Aplicação
 - Busca: Recurso de busca para lista todas as ferramentas salvas.
 - Adição: Recurso de adição de ferramentas
 
+## Ferramentas utilizada neste projeto
+
+- Tailwind CSS para Estilização
+- Jest e React Testing Library para Testes
+- React Hook Form para Validação de Formulários
+- React Router DOM para Roteamento
+- universal-cookie para armazenar e recuperar tokens
+
 ## Instalação:
 antes de iniciar certifique-se de tenha nodeJs intalado em sua máquina
 
